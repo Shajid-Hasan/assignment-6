@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+
+    <!-- Tailwind & DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Family -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <!-- Nav Bar -->
+
+        <div class="navbar bg-base-100 shadow-sm pl-10 pr-10 bg-[#15803D] inter">
+            <div class="navbar-start">
+                <a class="text-xl invert font-bold"><i class="fa-solid fa-tree"></i> Green Earth</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 text-white">
+                    <li><a>About</a></li>
+                    <li><a>Gallery</a></li>
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn text-[#15803D] rounded-[30px] border-none shadow-none bg-[#facc15]">Plant a Tree</a>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <section>
+            <div class="flex justify-between bg-[#CFF0DC]">
+                <div>
+                    <img src="./assets/hero-leaf1.png" alt="">
+                </div>
+                <div class="text-center my-19 space-x-10">
+                    <h1 class="text-4xl font-bold">Plant a Tree, Grow a Future</h1>
+                    <p class="my-4 text-[#1f2937]">Join our mission to plant 1 million trees and make the Earth greener
+                        for future generations.</p>
+                    <button class="btn btn-warning  rounded-[15px] text-[#15803D]">Get Involved</button>
+                </div>
+                <div>
+                    <img src="./assets/hero-leaf2.png" alt="">
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="bg-[#DCFCE7] inter">
+        <h1 class="text-center text-2xl pt-10 pb-10 font-bold text-[#1f2937]">Chose Your Trees</h1>
+
+        <section class="grid grid-cols-1 md:grid-cols-6 gap-4 max-w-11/12 mx-auto">
+            <!-- Categories -->
+            <section class="col-span-6 md:col-span-2 lg:col-span-1 bg-[#DCFCE7] p-4 rounded ">
+                <!-- <h2 class="text-xl font-bold mb-4">Categories</h2> -->
+                <!-- <ul id="category-container-all" class="space-y-2 bg-[#DCFCE7] text-center w-full">
+                </ul> -->
+                
+                <ul id="category-container" class="space-y-2 bg-[#DCFCE7] text-center w-full">
+                    
+                </ul>
+            </section>
+
+            <!-- Cart -->
+            <section class="col-span-6 md:col-span-2 lg:col-span-4 bg-white p-4 rounded shadow">
+                <!-- <h2 class="text-xl font-bold mb-4">Cart</h2> -->
+                <div id="plants-container" class="flex gap-2 w-full flex-row-reverse">
+                    
+                </div>
+            </section>
+
+            <!-- Aside -->
+            <div class="col-span-6 md:col-span-1 bg-white p-4 rounded shadow">
+                <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+                <p class="text-gray-600">Additional info or ads can go here.</p>
+            </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div  class="bg-[#fff] p-2"">
+                <h1>dod</h1>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
