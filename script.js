@@ -1,27 +1,40 @@
 // Category container All
-// const loadCategoryAll = () => {
-//     const url = 'https://openapi.programming-hero.com/api/plants';
-//     fetch(url)
-//     .then((res) => res.json())
-//     .then((json) => displayCategoryAll(json.plants));
-// }
+const loadCategoryAll = () => {
+    const url = 'https://openapi.programming-hero.com/api/plants';
+    fetch(url)
+    .then((res) => res.json())
+    .then((json) => displayCategoryAll(json.plants));
+    // showPlantsCategory(json.plants)
+}
 
-// const displayCategoryAll = (names) => {
-//     const allCategory = document
-//     .getElementById('category-container-all')
-//     allCategory.innerHTML = '';
+const displayCategoryAll = (names) => {
+    const allCategory = document
+    .getElementById('plants-container')
+    allCategory.innerHTML = '';
 
-//     for(let name of names){
-//     // console.log(name);
-//     const buttonLi = document.createElement('li')
-//     buttonLi.innerHTML = `  
-//         <li  class="btn bg-[#DCFCE7] w-full hover:bg-[#15803D]  hover:text-[#ffff]">${name.name}</li>
-//     `
-//     allCategory.append(buttonLi)
+    for(let plant of names){
+    // console.log(name);
+    const buttonLi = document.createElement('div')
+    buttonLi.innerHTML = 
+    `
+                    <div class="inter shadow-sm rounded-xl h-full">
+                        <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
+                        <div class="p-3">
+                            <h4 class="font-bold">${plant.name}</h4>
+                            <p class="text-[13px] my-2">${plant.description}</p>
+                            <div class="flex justify-between my-3">
+                                <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
+                                <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
+                            </div>
+                            <button id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                        </div>
+                    </div>
+            `
+    allCategory.append(buttonLi)
 
-//     }
-// }
-// loadCategoryAll()
+    }
+}
+loadCategoryAll()
 
 
 
@@ -47,6 +60,7 @@ const displayCategory = (names) => {
     `
         displayCategory.append(btnLi)
 
+
         btnLi.addEventListener('click', (e) => {
 
             const allLi = document.querySelectorAll('li')
@@ -71,33 +85,38 @@ const displayCategory = (names) => {
                 .catch(err => {
                     console.log(err)
                 })
-
-
         }
     }
+
+
     const showPlantsCategory = (fruits) => {
         const plantsContainer = document.getElementById('plants-container')
+        plantsContainer.innerHTML = '';
         fruits.forEach(plant => {
             console.log(plant)
-            plantsContainer.innerHTML += `
+            plantsContainer.innerHTML +=
+                `
                     <div class="inter shadow-sm rounded-xl h-full">
-                        <img class="h-50 w-full mx-auto shadow-sm" src="${plant.image}" alt="">
+                        <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
                         <div class="p-3">
                             <h4 class="font-bold">${plant.name}</h4>
                             <p class="text-[13px] my-2">${plant.description}</p>
                             <div class="flex justify-between my-3">
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
-                                <h6 class="text-[14px] font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
+                                <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button class="w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
-                    
                     </div>
-                    
             `
+            plantsContainer.querySelector('button').addEventListener('click', () => {
+                console.log('btn clicked')
+            })
         })
     }
 }
 
 
 loadCategories()
+loadCategoryAll()
+
