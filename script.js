@@ -26,7 +26,7 @@ const displayCategoryAll = (names) => {
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
                                 <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button onclick="addToCart('${plant.id}')" id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button id="addToCart-${plant.id}" class="w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
                     </div>
             `
@@ -75,7 +75,7 @@ const displayCategory = (names) => {
         })
 
         const loadTreeCategory = (categoryId) => {
-            console.log(categoryId)
+            // console.log(categoryId)
             fetch(`https://openapi.programming-hero.com/api/category/${categoryId}`)
                 .then(res => res.json())
                 .then(data => {
@@ -93,7 +93,7 @@ const displayCategory = (names) => {
         const plantsContainer = document.getElementById('plants-container')
         plantsContainer.innerHTML = '';
         fruits.forEach(plant => {
-            console.log(plant)
+            // console.log(plant)
             plantsContainer.innerHTML +=
                 `
                     <div class="inter shadow-sm rounded-xl h-full">
@@ -105,7 +105,7 @@ const displayCategory = (names) => {
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
                                 <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button onclick="addToCart('${plant.id}')" id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button class=" w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
                     </div>
             `
@@ -119,17 +119,48 @@ const displayCategory = (names) => {
         })
     }
 }
-function addToCart(id){
-    console.log('click')
-    const selectTree = document.getElementsByClassName('add-to-cart-btn')
-    // console.log(selectTree)
-    for(let tree of selectTree){
-        tree.addEventListener('click', function(){
-            const tree1 = tree.parentNode.parentNode
-        })
-    }
 
+
+// function addToCart(id){
+//     const treeJSON = JSON.stringify(addToCart)
+//     console.log(treeJSON)
+
+// }
+
+// plantsContainer.addEventListener('click', (e) => {
+//     console.log(e.target)
+// })
+
+
+let addCarts = []
+const select = document.getElementById('plants-container')
+select.addEventListener('click', (e) => {
+    // console.log(e.target)
+    if(e.target.innerText === 'Add to Cart' ){
+        handelAddToCart(e)
+    }
+})
+
+const handelAddToCart = (e) => {
+    const title = e.target.parentNode.children[0].innerText
+        console.log(title)
+        addCarts.push({
+            title: title
+        })
+        showAddtoCart(addCarts)
 }
+
+const showAddtoCart = (addCarts) => {
+    addCarts.forEach(addCart => {
+        addContainer.innerHTML += `
+            <div>
+                <h1>${addCart.title}</h1>
+            </div>
+        
+        `
+    })
+}
+
 loadCategories()
 loadCategoryAll()
 
