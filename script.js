@@ -1,4 +1,4 @@
-// ALL PLANTS CATEGORY
+// ALL PLANTS
 
 const loadCategoryAll = () => {
     const url = 'https://openapi.programming-hero.com/api/plants';
@@ -8,7 +8,7 @@ const loadCategoryAll = () => {
     // showPlantsCategory(json.plants)
 }
 
-// DISPLAY ALL PLANTS CATEGORY
+// DISPLAY ALL PLANTS
 const displayCategoryAll = (names) => {
     const allCategory = document
         .getElementById('plants-container')
@@ -106,13 +106,14 @@ const displayCategory = (names) => {
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
                                 <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button class=" w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button  class=" w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
                     </div>
             `
         })
     }
 }
+
 
 let addCarts = []
 const select = document.getElementById('plants-container')
@@ -127,16 +128,17 @@ const handelAddToCart = (e) => {
     console.log(e.target)
     const title = e.target.parentNode.children[0].innerText
     const price = e.target.parentNode.children[2].children[1].innerText
-    console.log(title, price)
+    // console.log(title, price)
     addCarts.push({
         title: title,
         price: price
     })
-    
+
     alert(title + ' ' + 'has been added to the cart')
 
     showAddtoCart(addCarts)
 }
+
 
 const showAddtoCart = (addCarts) => {
     addContainer.innerHTML = '';
@@ -147,13 +149,21 @@ const showAddtoCart = (addCarts) => {
                     <h1 class="text-[13px] font-bold">${addCart.title}</h1>
                     <span><i class="fa-solid fa-xmark text-red-500"></i></span>
                 </div>
-                <div>
+                <div id="price">
                     <p class="text-[13px]"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${addCart.price}</p>
                 </div>
+            </div>
+
+            <div class="flex justify-between">
+                <h1>Total</h1>
+                <h1 id="total"><i class="fa-solid fa-bangladeshi-taka-sign"></i>0</h1>
             </div>
         `
     })
 }
+
+    // const priceCalculate = document.getElementById('')
+    
 
 loadCategories()
 loadCategoryAll()
