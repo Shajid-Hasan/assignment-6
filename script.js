@@ -1,22 +1,24 @@
-// Category container All
+// ALL PLANTS CATEGORY
+
 const loadCategoryAll = () => {
     const url = 'https://openapi.programming-hero.com/api/plants';
     fetch(url)
-    .then((res) => res.json())
-    .then((json) => displayCategoryAll(json.plants));
+        .then((res) => res.json())
+        .then((json) => displayCategoryAll(json.plants));
     // showPlantsCategory(json.plants)
 }
 
+// DISPLAY ALL PLANTS CATEGORY
 const displayCategoryAll = (names) => {
     const allCategory = document
-    .getElementById('plants-container')
+        .getElementById('plants-container')
     allCategory.innerHTML = '';
 
-    for(let plant of names){
-    // console.log(name);
-    const buttonLi = document.createElement('div')
-    buttonLi.innerHTML = 
-    `
+    for (let plant of names) {
+        // console.log(name);
+        const buttonLi = document.createElement('div')
+        buttonLi.innerHTML =
+            `
                     <div class="inter shadow-sm rounded-xl h-full">
                         <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
                         <div class="p-3">
@@ -30,7 +32,7 @@ const displayCategoryAll = (names) => {
                         </div>
                     </div>
             `
-    allCategory.append(buttonLi)
+        allCategory.append(buttonLi)
 
     }
 }
@@ -38,7 +40,7 @@ loadCategoryAll()
 
 
 
-// Load Categories
+// LOAD PLANTS IN CATEGORY LIST
 const loadCategories = () => {
     const url = 'https://openapi.programming-hero.com/api/categories';
     fetch(url)
@@ -46,10 +48,9 @@ const loadCategories = () => {
         .then((json) => displayCategory(json.categories));
 }
 
-
+// DISPLAY PLANTS CONTAINER 
 const displayCategory = (names) => {
-    const displayCategory = document
-        .getElementById('category-container')
+    const displayCategory = document.getElementById('category-container')
     displayCategory.innerHTML = '';
 
     for (let name of names) {
@@ -113,30 +114,42 @@ const displayCategory = (names) => {
     }
 }
 
-
 let addCarts = []
 const select = document.getElementById('plants-container')
 select.addEventListener('click', (e) => {
     // console.log(e.target)
-    if(e.target.innerText === 'Add to Cart' ){
+    if (e.target.innerText === 'Add to Cart') {
         handelAddToCart(e)
     }
 })
 
 const handelAddToCart = (e) => {
+    console.log(e.target)
     const title = e.target.parentNode.children[0].innerText
-        console.log(title)
-        addCarts.push({
-            title: title
-        })
-        showAddtoCart(addCarts)
+    const price = e.target.parentNode.children[2].children[1].innerText
+    console.log(title, price)
+    addCarts.push({
+        title: title,
+        price: price
+    })
+    
+    alert(title + ' ' + 'has been added to the cart')
+
+    showAddtoCart(addCarts)
 }
 
 const showAddtoCart = (addCarts) => {
+    addContainer.innerHTML = '';
     addCarts.forEach(addCart => {
         addContainer.innerHTML += `
-            <div>
-                <h1>${addCart.title}</h1>
+            <div class="shadow-sm my-2 w-full p-2 bg-[#CFF0DC] rounded-xl">
+                <div class="flex justify-between ">
+                    <h1 class="text-[13px] font-bold">${addCart.title}</h1>
+                    <span><i class="fa-solid fa-xmark text-red-500"></i></span>
+                </div>
+                <div>
+                    <p class="text-[13px]"><i class="fa-solid fa-bangladeshi-taka-sign"></i> ${addCart.price}</p>
+                </div>
             </div>
         `
     })
