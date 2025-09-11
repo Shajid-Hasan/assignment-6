@@ -109,27 +109,9 @@ const displayCategory = (names) => {
                         </div>
                     </div>
             `
-            // plantsContainer.querySelector('button').addEventListener('click', () => {
-            //     console.log("add to cart clicked")
-            // })
-            // const addToCart = () => {
-            // conaole.log("click")
-
-    
         })
     }
 }
-
-
-// function addToCart(id){
-//     const treeJSON = JSON.stringify(addToCart)
-//     console.log(treeJSON)
-
-// }
-
-// plantsContainer.addEventListener('click', (e) => {
-//     console.log(e.target)
-// })
 
 
 let addCarts = []
@@ -156,7 +138,6 @@ const showAddtoCart = (addCarts) => {
             <div>
                 <h1>${addCart.title}</h1>
             </div>
-        
         `
     })
 }
