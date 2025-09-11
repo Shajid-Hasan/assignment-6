@@ -26,7 +26,7 @@ const displayCategoryAll = (names) => {
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
                                 <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button onclick="addToCart('${plant.id}')" id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
                     </div>
             `
@@ -105,18 +105,32 @@ const displayCategory = (names) => {
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
                                 <h6 class="text-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
                             </div>
-                            <button id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
+                            <button onclick="addToCart('${plant.id}')" id="add-to-cart-${plant.id}" class="add-to-cart-btn w-full bg-[#15803D] p-2 text-[#fff] rounded-full text-[10px]">Add to Cart</button>
                         </div>
                     </div>
             `
-            plantsContainer.querySelector('button').addEventListener('click', () => {
-                console.log('btn clicked')
-            })
+            // plantsContainer.querySelector('button').addEventListener('click', () => {
+            //     console.log("add to cart clicked")
+            // })
+            // const addToCart = () => {
+            // conaole.log("click")
+
+    
         })
     }
 }
+function addToCart(id){
+    console.log('click')
+    const selectTree = document.getElementsByClassName('add-to-cart-btn')
+    // console.log(selectTree)
+    for(let tree of selectTree){
+        tree.addEventListener('click', function(){
+            const tree1 = tree.parentNode.parentNode
+        })
+    }
 
-
+}
 loadCategories()
 loadCategoryAll()
+
 
