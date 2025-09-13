@@ -139,10 +139,13 @@ const handelAddToCart = (e) => {
     showAddtoCart(addCarts)
 }
 
-
+let total = 0;
 const showAddtoCart = (addCarts) => {
+    const addContainer = document.getElementById('addContainer')
     addContainer.innerHTML = '';
+
     addCarts.forEach(addCart => {
+        total = total + parseInt(addCart.price)
         addContainer.innerHTML += `
             <div class="shadow-sm my-2 w-full p-2 bg-[#CFF0DC] rounded-xl">
                 <div class="flex justify-between ">
@@ -154,15 +157,11 @@ const showAddtoCart = (addCarts) => {
                 </div>
             </div>
 
-            <div class="flex justify-between">
-                <h1>Total</h1>
-                <h1 id="total"><i class="fa-solid fa-bangladeshi-taka-sign"></i>0</h1>
-            </div>
         `
     })
+    const totalElement = document.getElementById('total')
+    totalElement.innerText = total;
 }
-
-    // const priceCalculate = document.getElementById('')
     
 
 loadCategories()
