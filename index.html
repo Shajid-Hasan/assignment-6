@@ -84,17 +84,37 @@
             <!-- ASIDE -->
             <div class="col-span-6 md:col-span-1 bg-white p-4 rounded shadow">
                 <h2 class="text-xl font-bold mb-4">Your Cart</h2>
-                
+
                 <div id="addContainer">
-        
+
+
+                </div>
+
+                <div class="flex justify-between">
+                    <h1>Total</h1>
+                    <h1><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="total">0</span></h1>
+                </div>
+        </section>
+
+        <!-- MODAL -->
+
+        <!-- Open the modal using ID.showModal() method -->
+
+        <dialog id="plants-details-modal" class="modal modal-bottom sm:modal-middle">
+            
+            <div class="modal-box">
+                <div id="modalContainer">
                     
                 </div>
-                
-            <div class="flex justify-between">
-                <h1>Total</h1>
-                <h1><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="total">0</span></h1>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
             </div>
-        </section>
+        </dialog>
+
 
         <!--    ABOUT THE CAMPAIGN -->
         <section class="mt-20 pb-10 inter mb-5">

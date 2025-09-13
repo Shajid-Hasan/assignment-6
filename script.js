@@ -1,5 +1,34 @@
 // ALL PLANTS
 
+const loadModal = (id) => {
+        console.log("modal", id)
+        const url = `https://openapi.programming-hero.com/api/plant/${id}`
+        fetch(url)
+            .then((res) => res.json())
+            .then((json) => showModal(json.plants));
+    }
+
+    const showModal = (plant) => {
+        console.log(plant)
+        const modalContainer = document.getElementById('plants-details-modal')
+        console.log(modalContainer)
+        const container = document.getElementById('modalContainer')
+        container.innerHTML = `
+            <div class="inter shadow-sm rounded-xl h-full">
+                        <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
+                        <div class="p-3">
+                            <h4  onclick="loadModal(${plant.id})" class="font-bold">${plant.name}</h4>
+                            <p class="text-[13px] my-2">${plant.description}</p>
+                            <div class="flex justify-between my-3">
+                                <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
+                                <h6 class="tsext-[14px] font-semibold items-center"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</h6>
+                            </div>
+                        </div>
+                    </div>
+        `
+
+        modalContainer.showModal()
+    }
 const loadCategoryAll = () => {
     const url = 'https://openapi.programming-hero.com/api/plants';
     fetch(url)
@@ -22,7 +51,7 @@ const displayCategoryAll = (names) => {
                     <div class="inter shadow-sm rounded-xl h-full">
                         <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
                         <div class="p-3">
-                            <h4 class="font-bold">${plant.name}</h4>
+                            <h4  onclick="loadModal(${plant.id})" class="font-bold">${plant.name}</h4>
                             <p class="text-[13px] my-2">${plant.description}</p>
                             <div class="flex justify-between my-3">
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
@@ -89,6 +118,8 @@ const displayCategory = (names) => {
         }
     }
 
+    
+
 
     const showPlantsCategory = (fruits) => {
         const plantsContainer = document.getElementById('plants-container')
@@ -100,7 +131,7 @@ const displayCategory = (names) => {
                     <div class="inter shadow-sm rounded-xl h-full">
                         <img class="h-50 w-full mx-auto shadow-sm bg-position-[center_top_3rem]" src="${plant.image}" alt="">
                         <div class="p-3">
-                            <h4 class="font-bold">${plant.name}</h4>
+                            <h4 onclick="loadModal()" class="font-bold">${plant.name}</h4>
                             <p class="text-[13px] my-2">${plant.description}</p>
                             <div class="flex justify-between my-3">
                                 <h6 class="text-[14px] rounded-2xl bg-[#DCFCE7] text-[#15803D] p-2 font-semibold">${plant.category}</h6>
@@ -162,9 +193,7 @@ const showAddtoCart = (addCarts) => {
     const totalElement = document.getElementById('total')
     totalElement.innerText = total;
 }
-    
+
 
 loadCategories()
 loadCategoryAll()
-
-
