@@ -1,4 +1,3 @@
-// ALL PLANTS
 
 const loadModal = (id) => {
         console.log("modal", id)
@@ -29,6 +28,7 @@ const loadModal = (id) => {
 
         modalContainer.showModal()
     }
+    // ALL PLANTS
 const loadCategoryAll = () => {
     const url = 'https://openapi.programming-hero.com/api/plants';
     fetch(url)
@@ -66,8 +66,6 @@ const displayCategoryAll = (names) => {
     }
 }
 loadCategoryAll()
-
-
 
 // LOAD PLANTS IN CATEGORY LIST
 const loadCategories = () => {
@@ -117,9 +115,6 @@ const displayCategory = (names) => {
                 })
         }
     }
-
-    
-
 
     const showPlantsCategory = (fruits) => {
         const plantsContainer = document.getElementById('plants-container')
